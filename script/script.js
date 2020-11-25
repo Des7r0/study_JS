@@ -18,11 +18,7 @@ const start = function(){                    //функция проверит �
   money = prompt('Ваш месячный доход?');
 }
 };  
-
-do {
-money = prompt('Ваш месячный доход?');
-}
-while (!isNumber(money));
+start();
 
 const showTypeOf = function(data) {
   console.log(typeof(data));
