@@ -1,13 +1,13 @@
-  'use strict';
+    'use strict';
 
 const isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
 let money,
-    start = function(){                    //функция проверит то, что ввел пользлватель
+    start = function(){                    
     money = prompt('Ваш месячный доход?');
-        while (!isNumber(money)) {   // если число NaN , если пустая строка , если ничего не 
+        while (!isNumber(money)) {   
     money = prompt('Ваш месячный доход?');
 }
 };  
@@ -47,17 +47,18 @@ let appData = {
             appData.addExpenses = addExpenses.split(' ').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ,');
             let question;
             let sum = 0;
-                for (let i = 0; i < 2; i++)  {               
-                      { question = prompt('Введите обязательную статью расходов' , 
-                      'Аренда автомобиля');                                      
-                while (isNumber(question)) {
-            question = prompt('Какой у вас дополнительный заработок?', 'Репетиторство');
-                }
-            }   do  {                                            
-            sum = prompt('Во сколько это обойдется?' , 4000);     
+                for (let i = 0; i < 2; i++)  {         
+            question = prompt('Введите обязательную статью расходов' , 
+                        'Аренда автомобиля');   
+                while (isNumber(question))    {
+            question = prompt('Введите обязательную статью расходов' , 
+                        'Аренда автомобиля');   
+            }                                          
+            sum = prompt('Во сколько это обойдется?' , 4000);   
+                while (!isNumber(sum)) {
+            sum = prompt('Во сколько это обойдется?' , 4000);   
             }
-                while (!isNumber(sum));
-                appData.expenses[question] = sum;
+            appData.expenses[question] = sum;
             }                       
                 return sum;
     },
@@ -97,14 +98,14 @@ let appData = {
     },
     getInfoDeposit: function(){
             if (appData.deposit) {
-              appData.percentDeposit = prompt('Какой годовой процент?' , 10);
-              while (!isNumber(appData.percentDeposit)) {
+                appData.percentDeposit = prompt('Какой годовой процент?' , 10);
+                while (!isNumber(appData.percentDeposit)) {
                     appData.percentDeposit = prompt('Какой годовой процент?' , 10); 
                 }          
-              appData.moneyDeposit = prompt('Какая сумма заложена?' , 10000);   
-              while (!isNumber(appData.moneyDeposit)) { 
                 appData.moneyDeposit = prompt('Какая сумма заложена?' , 10000);   
-              }
+                while (!isNumber(appData.moneyDeposit)) { 
+                appData.moneyDeposit = prompt('Какая сумма заложена?' , 10000);   
+                }
             }
 
     },
@@ -124,4 +125,4 @@ console.log('Возможные расходы:' ,appData.addExpenses);
 
 for (let key in appData) {
     console.log('Наша программа включает в себя данные: ' + key);
-  }
+}
