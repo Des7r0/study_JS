@@ -21,7 +21,7 @@ const depositPercent = document.querySelector('.deposit-percent');
 const targetAmount = document.querySelector('.target-amount');
 const periodSelect = document.querySelector('.period-select');
 
-
+/*
 const isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
@@ -148,3 +148,5 @@ console.log('Возможные расходы:' ,appData.addExpenses);
 for (let key in appData) {
     console.log('Наша программа включает в себя данные: ' + key);
 }
+
+*/
