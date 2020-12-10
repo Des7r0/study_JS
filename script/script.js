@@ -20,6 +20,7 @@ const expensesAmount = document.querySelector('.expenses-amount');
 const additionalExpensesItem = document.querySelector('.additional_expenses-item');
 const depositAmount = document.querySelector('.deposit-amount');
 const depositPercent = document.querySelector('.deposit-percent');
+const incomeAmount = document.querySelector('.income-amount');
 const targetAmount = document.querySelector('.target-amount');
 const periodSelect = document.querySelector('.period-select');
 const namePlaceholderInputs = document.querySelectorAll('.data input[placeholder="Наименование"]');
@@ -74,11 +75,26 @@ let appData = {
             this.budget = 0;
             this.budgetDay = 0;
             this.budgetMonth = 0;
+            budgetMonthValue.value = ''; 
+            budgetDayValue.value = '';
+            expensesAmount.value = '';
+            expensesMonthValue.value = '';
+            additionalExpensesValue.value = '';
+            additionalIncomeValue.value = '';
+            targetMonthValue.value = '';
+            targetAmount.value = '';
+            incomePeriodValue.value = '';
+            incomeAmount.value = '';
             [...document.querySelectorAll('input')].map(item => item.value = ''); 
             [...document.querySelectorAll('.data input')].map(item => item.disabled = false); 
             cancelButton.style.display = 'none';
             buttonCalculate.style.display = 'block';
             buttonCalculate.disabled = true;
+            incomePlus.removeAttribute('disabled', '');
+            expensesPlus.removeAttribute('disabled', '');
+            buttonCalculate.setAttribute('disabled', '');
+            periodSelect.value = 1;
+            periodAmount.textContent = periodSelect.value;
     },
 
     showResult: function() {
@@ -112,7 +128,7 @@ let appData = {
     },    
 
     getExpenses: function(){ 
-            expensesItems.forEach(item => {     //псевдомассив
+            expensesItems.forEach(item => {     
             let itemExpenses = item.querySelector('.expenses-title').value;
             let cashExpenses = item.querySelector('.expenses-amount').value;
             if(itemExpenses !== '' && cashExpenses !== ''){
@@ -201,7 +217,6 @@ let appData = {
 };
 cancelButton.addEventListener('click', appData.reset.bind(appData));
 buttonCalculate.addEventListener('click', appData.start.bind(appData));
-buttonCalculate.setAttribute('disabled', '');
 salaryAmount.addEventListener('input', () => buttonCalculate.disabled = salaryAmount.value.trim() === '');
 incomePlus.addEventListener('click' , appData.addIncomeBlock);
 expensesPlus.addEventListener('click' , appData.addExpensesBlock);
