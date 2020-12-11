@@ -201,14 +201,15 @@ const AppData = function() {
             cancelButton.addEventListener('click', this.reset.bind(this));
             buttonCalculate.addEventListener('click', this.start.bind(this));
             salaryAmount.addEventListener('input', () => buttonCalculate.disabled = salaryAmount.value.trim() === '');
-            incomePlus.addEventListener('click' , this.addIncomeBlock);
+            incomePlus.addEventListener('click' , this.addIncomesBlock);
             expensesPlus.addEventListener('click' , this.addExpensesBlock);
             periodSelect.addEventListener('change', function() {
             periodAmount.textContent = periodSelect.value;
             });
     };
 
-
+    const appData = new AppData();
+        appData.eventListeners();
 
 
 
