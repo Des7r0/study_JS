@@ -86,6 +86,18 @@ let appData = {
             buttonCalculate.setAttribute('disabled', '');
             periodSelect.value = 1;
             periodAmount.textContent = periodSelect.value;
+                for (let i = 1; i < incomeItems.length; i++) {
+                if (incomeItems[i] !== 0) {
+                    incomeItems[i].remove();
+                    incomePlus.style.display = 'block';
+                    }
+                }
+                for (let i = 1; i < expensesItems.length; i++) {
+                if (expensesItems[i] !== 0) {
+                    expensesItems[i].remove();
+                    expensesPlus.style.display = 'block';
+                    }
+    }
     },
 
     showResult: function() {
