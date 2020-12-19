@@ -1,4 +1,4 @@
-    'use strict';
+'use strict';
 const buttonCalculate = document.getElementById('start'); 
 buttonCalculate.disabled = true;
 const cancelButton = document.querySelector('#cancel');
@@ -52,7 +52,8 @@ class AppData {
         this.missionDone = 0;
     }
     start() {
-        [...document.querySelectorAll('.data input')].map(item => item.disabled = true);
+        [...document.querySelectorAll('.data input')].map(item => item.disabled = true);  // Блокировка инпутов
+        [...document.querySelectorAll('.data button')].map(item => item.disabled = true); // Блокировка кнопок
         this.budget = +salaryAmount.value;
         this.getExpenses();
         this.getIncome();
@@ -62,6 +63,7 @@ class AppData {
         this.getBudget();
         this.getAddIncome();
         this.showResult();
+        periodSelect.disabled = false;
         buttonCalculate.style.display = 'none';
         cancelButton.style.display = 'block';
     }
@@ -196,44 +198,3 @@ class AppData {
 } 
     const appData = new AppData();
         appData.eventListeners();
-
-
-
-
-
-
-
-
-    // getStatusIncome: function () {
-    //             if (appData.budgetDay >= 1200) {
-    //         return('У вас высокий уровень дохода');
-    //             } else if ((appData.budgetDay >= 600) && (appData.budgetDay < 1200)){
-    //         return('У вас средний уровень дохода');
-    //             } else if ((appData.budgetDay < 600) && (appData.budgetDay >= 0)){
-    //         return('К сожалению у вас уровень дохода ниже среднего');
-    //             } else { 
-    //         return('Что то пошло не так');
-    //             }
-    // },
-
-    // getInfoDeposit: function(){
-    //         if (appData.deposit) {
-    //             appData.percentDeposit = prompt('Какой годовой процент?' , 10);
-    //             while (!isNumber(appData.percentDeposit)) {
-    //                 appData.percentDeposit = prompt('Какой годовой процент?' , 10); 
-    //             }          
-    //             appData.moneyDeposit = prompt('Какая сумма заложена?' , 10000);   
-    //             while (!isNumber(appData.moneyDeposit)) { 
-    //             appData.moneyDeposit = prompt('Какая сумма заложена?' , 10000);   
-    //             }
-    //         }
-
-    // },
-
-// console.log('Накопления за месяц: ' , appData.budgetMonth);
-// console.log('Возможные расходы:' ,appData.addExpenses);
-
-// for (let key in appData) {
-//     console.log('Наша программа включает в себя данные: ' + key);
-// }
-
